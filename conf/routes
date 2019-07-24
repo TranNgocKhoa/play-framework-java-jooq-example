@@ -4,3 +4,6 @@ GET     /author/list    com.khoa.play.controllers.AuthorController.getListAuthor
 POST    /author         com.khoa.play.controllers.AuthorController.createAuthor()
 PUT     /author         com.khoa.play.controllers.AuthorController.updateAuthor()
 DELETE  /author/:id     com.khoa.play.controllers.AuthorController.deleteAuthor(id: Integer)
+
+
+GET     /async/author/list  com.khoa.play.controllers.AsyncAuthorController.getListAuthor()

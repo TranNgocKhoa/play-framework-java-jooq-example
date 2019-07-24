@@ -33,6 +33,10 @@
   <logger name="org.jdbcdslog.StatementLogger"  level="INFO" /> <!-- Will log all statements -->
   <logger name="org.jdbcdslog.ResultSetLogger"  level="OFF"  /> <!-- Won' log result sets -->
 
+  <logger name="org.jooq.Constants" level="warn">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
   <root level="WARN">
     <appender-ref ref="ASYNCFILE" />
     <appender-ref ref="ASYNCSTDOUT" />
