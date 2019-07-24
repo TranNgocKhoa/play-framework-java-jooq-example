@@ -1,0 +1,125 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'nu.studer:gradle-jooq-plugin:3.0.3'
+    }
+}
+
+
+
+plugins {
+    id 'java'
+    id 'org.gradle.playframework' version '0.6'
+    id 'idea'
+}
+
+apply plugin: 'nu.studer.jooq'
+
+group 'com.khoa'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    maven {
+        name "lightbend-maven-release"
+        url "https://repo.lightbend.com/lightbend/maven-releases"
+    }
+    ivy {
+        name "lightbend-ivy-release"
+        url "https://repo.lightbend.com/lightbend/ivy-releases"
+        layout "ivy"
+    }
+}
+
+play {
+    platform {
+        playVersion = '2.6.14'
+        scalaVersion = '2.11'
+        javaVersion = JavaVersion.VERSION_1_8
+    }
+    injectedRoutesGenerator = true
+}
+
+dependencies {
+    implementation "commons-lang:commons-lang:2.6"
+    implementation "com.typesafe.play:play-guice_2.11:2.6.14"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+
+    implementation "com.typesafe.play:play-java-jpa_2.11:2.6.14"
+
+    // Database
+    implementation 'org.jooq:jooq:3.11.11'
+    implementation 'org.jooq:jooq-meta:3.11.11'
+    implementation 'org.jooq:jooq-codegen:3.11.11'
+
+    implementation "mysql:mysql-connector-java:5.1.41"
+    jooqRuntime "mysql:mysql-connector-java:5.1.41"
+    compile 'org.jooq:jooq'
+
+    testImplementation "org.scalatestplus.play:scalatestplus-play_2.11:3.1.2"
+}
+
+jooq {
+    version = '3.11.11'
+    edition = 'OSS'
+    sample(sourceSets.main) {
+        jdbc {
+            driver = 'com.mysql.jdbc.Driver'
+            url = 'jdbc:mysql://172.17.0.2:3306/library?useSSL=false'
+            user = 'root'
+            password = '12345'
+            properties {
+                property {
+                    key = 'ssl'
+                    value = 'false'
+                }
+            }
+        }
+        generator {
+            name = 'org.jooq.codegen.DefaultGenerator'
+            strategy {
+                name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+                // ...
+            }
+            database {
+                name = 'org.jooq.meta.mysql.MySQLDatabase'
+                inputSchema = 'library'
+                forcedTypes {
+                    forcedType {
+                        name = 'varchar'
+                        expression = '.*'
+                        types = 'JSONB?'
+                    }
+                    forcedType {
+                        name = 'varchar'
+                        expression = '.*'
+                        types = 'INET'
+                    }
+                }
+                // ...
+            }
+            generate {
+                relations = true
+                deprecated = false
+                records = true
+                immutablePojos = true
+                fluentSetters = true
+                // ...
+            }
+            target {
+                packageName = 'com.khoa.play.jooq'
+                directory = 'app'
+            }
+        }
+    }
+}
+
+
+
+
