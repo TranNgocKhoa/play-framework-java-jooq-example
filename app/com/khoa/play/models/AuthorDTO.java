@@ -1,21 +1,26 @@
 package com.khoa.play.models;
 
 public class AuthorDTO {
-    private Integer id;
-    private String  firstName;
-    private String  lastName;
+    private Long id;
+    private String firstName;
+    private String lastName;
 
+    public AuthorDTO(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public static class Builder {
 
-        private Integer id;
+        private Long id;
         private String firstName;
         private String lastName;
 
         public Builder() {
         }
 
-        public Builder id(Integer val) {
+        public Builder id(Long val) {
             id = val;
             return this;
         }
@@ -41,11 +46,15 @@ public class AuthorDTO {
        this.lastName = builder.lastName;
     }
 
-    public Integer getId() {
+    public AuthorDTO() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -9,6 +9,7 @@ import com.khoa.play.jooq.Keys;
 import com.khoa.play.jooq.Library;
 import com.khoa.play.jooq.tables.records.AuthorRecord;
 
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +42,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Author extends TableImpl<AuthorRecord> {
 
-    private static final long serialVersionUID = 1586895969;
+    private static final long serialVersionUID = 192566823;
 
     /**
      * The reference instance of <code>library.author</code>
@@ -59,17 +60,32 @@ public class Author extends TableImpl<AuthorRecord> {
     /**
      * The column <code>library.author.id</code>.
      */
-    public final TableField<AuthorRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<AuthorRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>library.author.first_name</code>.
      */
-    public final TableField<AuthorRecord, String> FIRST_NAME = createField("first_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<AuthorRecord, String> FIRST_NAME = createField("first_name", org.jooq.impl.SQLDataType.VARCHAR(50), this, "");
 
     /**
      * The column <code>library.author.last_name</code>.
      */
-    public final TableField<AuthorRecord, String> LAST_NAME = createField("last_name", org.jooq.impl.SQLDataType.VARCHAR(255), this, "");
+    public final TableField<AuthorRecord, String> LAST_NAME = createField("last_name", org.jooq.impl.SQLDataType.VARCHAR(50).nullable(false), this, "");
+
+    /**
+     * The column <code>library.author.date_of_birth</code>.
+     */
+    public final TableField<AuthorRecord, Date> DATE_OF_BIRTH = createField("date_of_birth", org.jooq.impl.SQLDataType.DATE, this, "");
+
+    /**
+     * The column <code>library.author.year_of_birth</code>.
+     */
+    public final TableField<AuthorRecord, Integer> YEAR_OF_BIRTH = createField("year_of_birth", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>library.author.distinguished</code>.
+     */
+    public final TableField<AuthorRecord, Integer> DISTINGUISHED = createField("distinguished", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * Create a <code>library.author</code> table reference
@@ -124,7 +140,7 @@ public class Author extends TableImpl<AuthorRecord> {
      * {@inheritDoc}
      */
     @Override
-    public Identity<AuthorRecord, Integer> getIdentity() {
+    public Identity<AuthorRecord, Long> getIdentity() {
         return Keys.IDENTITY_AUTHOR;
     }
 

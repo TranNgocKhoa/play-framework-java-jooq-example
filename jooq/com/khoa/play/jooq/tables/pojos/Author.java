@@ -5,6 +5,7 @@ package com.khoa.play.jooq.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.annotation.Generated;
 
@@ -22,29 +23,41 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Author implements Serializable {
 
-    private static final long serialVersionUID = -668611471;
+    private static final long serialVersionUID = -2026467622;
 
-    private final Integer id;
+    private final Long    id;
     private final String  firstName;
     private final String  lastName;
+    private final Date    dateOfBirth;
+    private final Integer yearOfBirth;
+    private final Integer distinguished;
 
     public Author(Author value) {
         this.id = value.id;
         this.firstName = value.firstName;
         this.lastName = value.lastName;
+        this.dateOfBirth = value.dateOfBirth;
+        this.yearOfBirth = value.yearOfBirth;
+        this.distinguished = value.distinguished;
     }
 
     public Author(
-        Integer id,
+        Long    id,
         String  firstName,
-        String  lastName
+        String  lastName,
+        Date    dateOfBirth,
+        Integer yearOfBirth,
+        Integer distinguished
     ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.yearOfBirth = yearOfBirth;
+        this.distinguished = distinguished;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 
@@ -56,6 +69,18 @@ public class Author implements Serializable {
         return this.lastName;
     }
 
+    public Date getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
+    public Integer getYearOfBirth() {
+        return this.yearOfBirth;
+    }
+
+    public Integer getDistinguished() {
+        return this.distinguished;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Author (");
@@ -63,6 +88,9 @@ public class Author implements Serializable {
         sb.append(id);
         sb.append(", ").append(firstName);
         sb.append(", ").append(lastName);
+        sb.append(", ").append(dateOfBirth);
+        sb.append(", ").append(yearOfBirth);
+        sb.append(", ").append(distinguished);
 
         sb.append(")");
         return sb.toString();

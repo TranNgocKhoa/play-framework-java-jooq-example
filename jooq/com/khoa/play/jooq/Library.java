@@ -5,6 +5,10 @@ package com.khoa.play.jooq;
 
 
 import com.khoa.play.jooq.tables.Author;
+import com.khoa.play.jooq.tables.Book;
+import com.khoa.play.jooq.tables.BookStore;
+import com.khoa.play.jooq.tables.BookToBookStore;
+import com.khoa.play.jooq.tables.Language;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +34,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Library extends SchemaImpl {
 
-    private static final long serialVersionUID = 2115585654;
+    private static final long serialVersionUID = -864291148;
 
     /**
      * The reference instance of <code>library</code>
@@ -41,6 +45,26 @@ public class Library extends SchemaImpl {
      * The table <code>library.author</code>.
      */
     public final Author AUTHOR = com.khoa.play.jooq.tables.Author.AUTHOR;
+
+    /**
+     * The table <code>library.book</code>.
+     */
+    public final Book BOOK = com.khoa.play.jooq.tables.Book.BOOK;
+
+    /**
+     * The table <code>library.book_store</code>.
+     */
+    public final BookStore BOOK_STORE = com.khoa.play.jooq.tables.BookStore.BOOK_STORE;
+
+    /**
+     * The table <code>library.book_to_book_store</code>.
+     */
+    public final BookToBookStore BOOK_TO_BOOK_STORE = com.khoa.play.jooq.tables.BookToBookStore.BOOK_TO_BOOK_STORE;
+
+    /**
+     * The table <code>library.language</code>.
+     */
+    public final Language LANGUAGE = com.khoa.play.jooq.tables.Language.LANGUAGE;
 
     /**
      * No further instances allowed
@@ -67,6 +91,10 @@ public class Library extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
-            Author.AUTHOR);
+            Author.AUTHOR,
+            Book.BOOK,
+            BookStore.BOOK_STORE,
+            BookToBookStore.BOOK_TO_BOOK_STORE,
+            Language.LANGUAGE);
     }
 }

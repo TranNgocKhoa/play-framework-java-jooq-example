@@ -31,7 +31,9 @@ public class AuthorRepository {
                 .values(author.getFirstName(), author.getLastName())
                 .returning()
                 .fetch().get(0);
-        return new Author(record.getId(), record.getFirstName(), record.getLastName());
+
+        return new Author(record.getId(), record.getFirstName(), record.getLastName(),
+                record.getDateOfBirth(), record.getYearOfBirth(), record.getDistinguished());
     }
 
     public Author updateAuthor(Author author) {
@@ -40,7 +42,8 @@ public class AuthorRepository {
                 .set(LIBRARY.AUTHOR.LAST_NAME, author.getLastName())
                 .where(LIBRARY.AUTHOR.ID.eq(author.getId()))
                 .returning().fetchOne();
-        return new Author(record.getId(), record.getFirstName(), record.getLastName());
+        return new Author(record.getId(), record.getFirstName(), record.getLastName(),
+                record.getDateOfBirth(), record.getYearOfBirth(), record.getDistinguished());
     }
 
     public boolean deleteAuthor(Integer id) {

@@ -22,6 +22,6 @@ public class AuthorMapper {
     }
 
     public static Author toPojo(AuthorDTO dto) {
-        return new Author(dto.getId(), dto.getFirstName(), dto.getLastName());
+        return new Author(dto.getId(), dto.getFirstName(), dto.getLastName(), null, null, null);
     }
 }

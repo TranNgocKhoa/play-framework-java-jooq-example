@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.11.0.xsd">
+    <logging>WARN</logging>
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>com.mysql.jdbc.Driver</driver>
@@ -15,6 +16,9 @@
              - org.jooq.codegen.ScalaGenerator
              Defaults to org.jooq.codegen.JavaGenerator -->
         <name>org.jooq.codegen.JavaGenerator</name>
+        <strategy>
+            <name>org.jooq.codegen.DefaultGeneratorStrategy</name>
+        </strategy>
 
         <database>
             <!-- The database type. The format here is:
@@ -35,13 +39,22 @@
                  Excludes match before includes, i.e. excludes have a higher priority -->
             <excludes></excludes>
         </database>
+        <!-- generate flag-->
+        <generate>
+            <immutablePojos>true</immutablePojos>
+            <relations>true</relations>
+            <deprecated>false</deprecated>
+            <records>true</records>
+            <fluentSetters>true</fluentSetters>
+        </generate>
 
         <target>
             <!-- The destination package of your generated classes (within the destination directory) -->
-            <packageName>com.khoa.play.repositories</packageName>
+            <packageName>com.khoa.play.jooq</packageName>
 
             <!-- The destination directory of your generated classes. Using Maven directory layout here -->
-            <directory>/home/khoa/github/play-source/play-demo/app/com/khoa/play/repositories</directory>
+            <directory>../../jooq</directory>
         </target>
     </generator>
+
 </configuration>

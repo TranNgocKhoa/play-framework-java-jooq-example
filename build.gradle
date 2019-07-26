@@ -1,13 +1,13 @@
-buildscript {
-    repositories {
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
-    }
-    dependencies {
-        classpath 'nu.studer:gradle-jooq-plugin:3.0.3'
-    }
-}
+//buildscript {
+//    repositories {
+//        maven {
+//            url 'https://plugins.gradle.org/m2/'
+//        }
+//    }
+//    dependencies {
+//        classpath 'nu.studer:gradle-jooq-plugin:3.0.3'
+//    }
+//}
 
 plugins {
     id 'java'
@@ -15,7 +15,7 @@ plugins {
     id 'idea'
 }
 
-apply plugin: 'nu.studer.jooq'
+// apply plugin: 'nu.studer.jooq'
 
 group 'com.khoa'
 version '1.0-SNAPSHOT'
@@ -57,66 +57,78 @@ dependencies {
     implementation 'org.jooq:jooq-codegen:3.11.11'
 
     implementation "mysql:mysql-connector-java:5.1.41"
-    jooqRuntime "mysql:mysql-connector-java:5.1.41"
-    compile 'org.jooq:jooq'
+    //jooqRuntime "mysql:mysql-connector-java:5.1.41" // using with nu.studer:gradle-jooq-plugin
+    //compile 'org.jooq:jooq' // using with nu.studer:gradle-jooq-plugin
+
+    // Swagger
+    // implementation "io.swagger:swagger-play2_2.11:1.6.0"
 
     testImplementation "org.scalatestplus.play:scalatestplus-play_2.11:3.1.2"
 }
 
-jooq {
-    version = '3.11.11'
-    edition = 'OSS'
-    sample(sourceSets.main) {
-        jdbc {
-            driver = 'com.mysql.jdbc.Driver'
-            url = 'jdbc:mysql://172.17.0.2:3306/library?useSSL=false'
-            user = 'root'
-            password = '12345'
-            properties {
-                property {
-                    key = 'ssl'
-                    value = 'false'
-                }
-            }
-        }
-        generator {
-            name = 'org.jooq.codegen.DefaultGenerator'
-            strategy {
-                name = 'org.jooq.codegen.DefaultGeneratorStrategy'
-                // ...
-            }
-            database {
-                name = 'org.jooq.meta.mysql.MySQLDatabase'
-                inputSchema = 'library'
-                forcedTypes {
-                    forcedType {
-                        name = 'varchar'
-                        expression = '.*'
-                        types = 'JSONB?'
-                    }
-                    forcedType {
-                        name = 'varchar'
-                        expression = '.*'
-                        types = 'INET'
-                    }
-                }
-                // ...
-            }
-            generate {
-                relations = true
-                deprecated = false
-                records = true
-                immutablePojos = true
-                fluentSetters = true
-                // ...
-            }
-            target {
-                packageName = 'com.khoa.play.jooq'
-                directory = 'app'
-            }
+
+sourceSets {
+    main {
+        java {
+            srcDir 'jooq'
         }
     }
 }
+
+//jooq {
+//    version = '3.11.11'
+//    edition = 'OSS'
+//    sample(sourceSets.main) {
+//        jdbc {
+//            driver = 'com.mysql.jdbc.Driver'
+//            url = 'jdbc:mysql://172.17.0.2:3306/library?useSSL=false'
+//            user = 'root'
+//            password = '12345'
+//            properties {
+//                property {
+//                    key = 'ssl'
+//                    value = 'false'
+//                }
+//            }
+//        }
+//        generator {
+//            name = 'org.jooq.codegen.DefaultGenerator'
+//            strategy {
+//                name = 'org.jooq.codegen.DefaultGeneratorStrategy'
+//                // ...
+//            }
+//            database {
+//                name = 'org.jooq.meta.mysql.MySQLDatabase'
+//                inputSchema = 'library'
+//                forcedTypes {
+//                    forcedType {
+//                        name = 'varchar'
+//                        expression = '.*'
+//                        types = 'JSONB?'
+//                    }
+//                    forcedType {
+//                        name = 'varchar'
+//                        expression = '.*'
+//                        types = 'INET'
+//                    }
+//                }
+//                // ...
+//            }
+//            generate {
+//                relations = true
+//                deprecated = false
+//                records = true
+//                immutablePojos = true
+//                fluentSetters = true
+//                // ...
+//            }
+//            target {
+//                packageName = 'com.khoa.play.jooq'
+//                directory = 'app'
+//            }
+//        }
+//    }
+//}
 
 
 
