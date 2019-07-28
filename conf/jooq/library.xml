@@ -4,9 +4,9 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>com.mysql.jdbc.Driver</driver>
-        <url>jdbc:mysql://172.17.0.2:3306/library</url>
-        <user>root</user>
-        <password>12345</password>
+        <url>jdbc:mysql://database-aws-test.c76ul42os0ug.ap-southeast-1.rds.amazonaws.com:3306/library</url>
+        <user>admin</user>
+        <password>12345678</password>
     </jdbc>
 
     <generator>

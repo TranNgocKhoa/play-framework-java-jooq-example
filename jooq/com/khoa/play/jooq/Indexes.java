@@ -9,6 +9,7 @@ import com.khoa.play.jooq.tables.Book;
 import com.khoa.play.jooq.tables.BookStore;
 import com.khoa.play.jooq.tables.BookToBookStore;
 import com.khoa.play.jooq.tables.Language;
+import com.khoa.play.jooq.tables.User;
 
 import javax.annotation.Generated;
 
@@ -42,6 +43,7 @@ public class Indexes {
     public static final Index BOOK_TO_BOOK_STORE_FK_B2BS_BOOK = Indexes0.BOOK_TO_BOOK_STORE_FK_B2BS_BOOK;
     public static final Index BOOK_TO_BOOK_STORE_PRIMARY = Indexes0.BOOK_TO_BOOK_STORE_PRIMARY;
     public static final Index LANGUAGE_PRIMARY = Indexes0.LANGUAGE_PRIMARY;
+    public static final Index USER_PRIMARY = Indexes0.USER_PRIMARY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
@@ -56,5 +58,6 @@ public class Indexes {
         public static Index BOOK_TO_BOOK_STORE_FK_B2BS_BOOK = Internal.createIndex("fk_b2bs_book", BookToBookStore.BOOK_TO_BOOK_STORE, new OrderField[] { BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID }, false);
         public static Index BOOK_TO_BOOK_STORE_PRIMARY = Internal.createIndex("PRIMARY", BookToBookStore.BOOK_TO_BOOK_STORE, new OrderField[] { BookToBookStore.BOOK_TO_BOOK_STORE.NAME, BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID }, true);
         public static Index LANGUAGE_PRIMARY = Internal.createIndex("PRIMARY", Language.LANGUAGE, new OrderField[] { Language.LANGUAGE.ID }, true);
+        public static Index USER_PRIMARY = Internal.createIndex("PRIMARY", User.USER, new OrderField[] { User.USER.ID }, true);
     }
 }

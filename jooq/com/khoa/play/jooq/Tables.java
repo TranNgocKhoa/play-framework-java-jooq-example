@@ -9,6 +9,7 @@ import com.khoa.play.jooq.tables.Book;
 import com.khoa.play.jooq.tables.BookStore;
 import com.khoa.play.jooq.tables.BookToBookStore;
 import com.khoa.play.jooq.tables.Language;
+import com.khoa.play.jooq.tables.User;
 
 import javax.annotation.Generated;
 
@@ -50,4 +51,9 @@ public class Tables {
      * The table <code>library.language</code>.
      */
     public static final Language LANGUAGE = com.khoa.play.jooq.tables.Language.LANGUAGE;
+
+    /**
+     * The table <code>library.user</code>.
+     */
+    public static final User USER = com.khoa.play.jooq.tables.User.USER;
 }

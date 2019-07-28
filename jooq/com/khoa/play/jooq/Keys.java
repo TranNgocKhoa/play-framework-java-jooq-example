@@ -9,11 +9,13 @@ import com.khoa.play.jooq.tables.Book;
 import com.khoa.play.jooq.tables.BookStore;
 import com.khoa.play.jooq.tables.BookToBookStore;
 import com.khoa.play.jooq.tables.Language;
+import com.khoa.play.jooq.tables.User;
 import com.khoa.play.jooq.tables.records.AuthorRecord;
 import com.khoa.play.jooq.tables.records.BookRecord;
 import com.khoa.play.jooq.tables.records.BookStoreRecord;
 import com.khoa.play.jooq.tables.records.BookToBookStoreRecord;
 import com.khoa.play.jooq.tables.records.LanguageRecord;
+import com.khoa.play.jooq.tables.records.UserRecord;
 
 import javax.annotation.Generated;
 
@@ -44,6 +46,7 @@ public class Keys {
     public static final Identity<AuthorRecord, Long> IDENTITY_AUTHOR = Identities0.IDENTITY_AUTHOR;
     public static final Identity<BookRecord, Long> IDENTITY_BOOK = Identities0.IDENTITY_BOOK;
     public static final Identity<LanguageRecord, Long> IDENTITY_LANGUAGE = Identities0.IDENTITY_LANGUAGE;
+    public static final Identity<UserRecord, Long> IDENTITY_USER = Identities0.IDENTITY_USER;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -54,6 +57,7 @@ public class Keys {
     public static final UniqueKey<BookStoreRecord> KEY_BOOK_STORE_NAME = UniqueKeys0.KEY_BOOK_STORE_NAME;
     public static final UniqueKey<BookToBookStoreRecord> KEY_BOOK_TO_BOOK_STORE_PRIMARY = UniqueKeys0.KEY_BOOK_TO_BOOK_STORE_PRIMARY;
     public static final UniqueKey<LanguageRecord> KEY_LANGUAGE_PRIMARY = UniqueKeys0.KEY_LANGUAGE_PRIMARY;
+    public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = UniqueKeys0.KEY_USER_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -72,6 +76,7 @@ public class Keys {
         public static Identity<AuthorRecord, Long> IDENTITY_AUTHOR = Internal.createIdentity(Author.AUTHOR, Author.AUTHOR.ID);
         public static Identity<BookRecord, Long> IDENTITY_BOOK = Internal.createIdentity(Book.BOOK, Book.BOOK.ID);
         public static Identity<LanguageRecord, Long> IDENTITY_LANGUAGE = Internal.createIdentity(Language.LANGUAGE, Language.LANGUAGE.ID);
+        public static Identity<UserRecord, Long> IDENTITY_USER = Internal.createIdentity(User.USER, User.USER.ID);
     }
 
     private static class UniqueKeys0 {
@@ -80,6 +85,7 @@ public class Keys {
         public static final UniqueKey<BookStoreRecord> KEY_BOOK_STORE_NAME = Internal.createUniqueKey(BookStore.BOOK_STORE, "KEY_book_store_name", BookStore.BOOK_STORE.NAME);
         public static final UniqueKey<BookToBookStoreRecord> KEY_BOOK_TO_BOOK_STORE_PRIMARY = Internal.createUniqueKey(BookToBookStore.BOOK_TO_BOOK_STORE, "KEY_book_to_book_store_PRIMARY", BookToBookStore.BOOK_TO_BOOK_STORE.NAME, BookToBookStore.BOOK_TO_BOOK_STORE.BOOK_ID);
         public static final UniqueKey<LanguageRecord> KEY_LANGUAGE_PRIMARY = Internal.createUniqueKey(Language.LANGUAGE, "KEY_language_PRIMARY", Language.LANGUAGE.ID);
+        public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = Internal.createUniqueKey(User.USER, "KEY_user_PRIMARY", User.USER.ID);
     }
 
     private static class ForeignKeys0 {

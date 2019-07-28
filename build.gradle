@@ -64,6 +64,11 @@ dependencies {
     // implementation "io.swagger:swagger-play2_2.11:1.6.0"
 
     testImplementation "org.scalatestplus.play:scalatestplus-play_2.11:3.1.2"
+
+    // Password encodder
+    implementation "org.mindrot:jbcrypt:0.4"
+    implementation 'com.auth0:java-jwt:3.8.1'
+
 }
 
 

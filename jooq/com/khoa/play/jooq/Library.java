@@ -9,6 +9,7 @@ import com.khoa.play.jooq.tables.Book;
 import com.khoa.play.jooq.tables.BookStore;
 import com.khoa.play.jooq.tables.BookToBookStore;
 import com.khoa.play.jooq.tables.Language;
+import com.khoa.play.jooq.tables.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Library extends SchemaImpl {
 
-    private static final long serialVersionUID = -864291148;
+    private static final long serialVersionUID = 1052274468;
 
     /**
      * The reference instance of <code>library</code>
@@ -67,6 +68,11 @@ public class Library extends SchemaImpl {
     public final Language LANGUAGE = com.khoa.play.jooq.tables.Language.LANGUAGE;
 
     /**
+     * The table <code>library.user</code>.
+     */
+    public final User USER = com.khoa.play.jooq.tables.User.USER;
+
+    /**
      * No further instances allowed
      */
     private Library() {
@@ -95,6 +101,7 @@ public class Library extends SchemaImpl {
             Book.BOOK,
             BookStore.BOOK_STORE,
             BookToBookStore.BOOK_TO_BOOK_STORE,
-            Language.LANGUAGE);
+            Language.LANGUAGE,
+            User.USER);
     }
 }
