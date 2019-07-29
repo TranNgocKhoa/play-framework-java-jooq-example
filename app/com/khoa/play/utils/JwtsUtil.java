@@ -43,5 +43,10 @@ public class JwtsUtil {
             return false;
         }
     }
+
+    public String getClaims(String jwt) throws Exception {
+        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(Constants.SECRET_KEY).parseClaimsJws(jwt);
+        return  claimsJws.getSignature();
+    }
 }
 

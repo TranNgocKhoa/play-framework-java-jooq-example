@@ -1,10 +1,12 @@
 package com.khoa.play.controllers;
 
+import com.khoa.play.configs.DefaultAuthorizer;
 import com.khoa.play.models.AuthorDTO;
 import com.khoa.play.services.AuthorService;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
 import javax.inject.Inject;
 
@@ -17,6 +19,7 @@ public class AuthorController extends Controller {
         this.authorService = authorService;
     }
 
+    @Security.Authenticated(DefaultAuthorizer.class)
     public Result getListAuthor() {
         return ok(Json.toJson(authorService.getListAuthor()));
     }

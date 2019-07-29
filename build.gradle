@@ -49,7 +49,14 @@ dependencies {
     implementation "com.typesafe.play:play-guice_2.11:2.6.14"
     implementation "ch.qos.logback:logback-classic:1.2.3"
 
-    implementation "com.typesafe.play:play-java-jpa_2.11:2.6.14"
+
+    // Need for Database
+    implementation "com.typesafe.play:play-java-jdbc_2.11:2.6.14"
+
+    //Need for CORS
+    implementation "com.typesafe.play:filters-helpers_2.11:2.6.14"
+
+    // implementation "com.typesafe.play:play-java-jpa_2.11:2.6.14"
 
     // Database
     implementation 'org.jooq:jooq:3.11.11'
